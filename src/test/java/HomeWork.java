@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -120,6 +121,28 @@ public class HomeWork {
 
     }
 
+
+    @Test
+    public void classwork2(){
+        WebElement loginButton = wd.findElement(By.cssSelector("[name='login']"));
+        String text = loginButton.getText();
+        System.out.println(text);
+
+        WebElement form = wd.findElement(By.xpath("//form"));
+        String textForm = form.getText();
+        System.out.println("*********");
+        System.out.println(textForm);
+
+        WebElement html = wd.findElement(By.tagName("html"));
+        String textAll = html.getText();
+        System.out.println("*********");
+        System.out.println(textAll);
+
+        WebElement br = wd.findElement(By.tagName("br"));
+        System.out.println("*********");
+        System.out.println("text br --->"+br.getText());
+    }
+
     @Test
     public void classWork(){
 
@@ -150,7 +173,15 @@ public class HomeWork {
         WebElement el8 = wd.findElement(By.xpath("//a[@href='/login']/preceding-sibling::h1"));
         List<WebElement> list2 = wd.findElements(By.xpath("//a[@href='/login']/preceding-sibling::a"));
 
+        WebElement el9 = wd.findElement(By.xpath("//a[last()]/preceding-sibling::a[2]"));
+        List<WebElement> list3 = wd.findElements(By.xpath("//a[last()]/preceding-sibling::*"));
 
 
+
+    }
+
+    @AfterClass
+    public void postCondition(){
+        wd.quit();
     }
 }
